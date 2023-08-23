@@ -72,8 +72,7 @@ const login = async (req, res) => {
         expire: 10000,
         httpOnly: true,
         secure: false,
-        sameSite: 'lax',
-        path: '/
+        sameSite: 'lax'     
       })
       return res.status(200).json(data);
   }
