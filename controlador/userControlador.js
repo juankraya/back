@@ -71,10 +71,11 @@ const login = async (req, res) => {
       .cookie("cookie", token, {
         expire: 10000,
         httpOnly: true,
-        secure: true,
-        sameSite: 'lax'
+        secure: false,
+        sameSite: 'lax',
+        path: '/
       })
-      .json(data);
+      .status(200).json(data);
   }
 };
 
