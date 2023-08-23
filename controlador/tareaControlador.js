@@ -64,7 +64,7 @@ const deleteTaskbyId = async (req, res) => {
   try {
     //verificar usuario
 
-    const userDelete = await prisma.usuario.findFirst({
+    /*const userDelete = await prisma.usuario.findFirst({
       where: {
         id: req.usuario.id,
       },
@@ -73,7 +73,7 @@ const deleteTaskbyId = async (req, res) => {
     if (!userDelete) {
       const error = new Error("Esta tarea no es del usuario logeado");
       return res.status(404).json({ msg: error.message });
-    }
+    }*/
 
     const taskDelete = await prisma.ejercicio.delete({
       where: {
