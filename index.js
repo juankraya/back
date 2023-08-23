@@ -6,8 +6,17 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 const app = express();
+
+const whiteList = [process.env.FRONTEND];
+
 const corsOptions = {
-  origin: true, //included origin as true
+  origin: function (origin, callback) {
+    if (whiteList.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Error de cors"));
+    }
+  },
   credentials: true, //included credentials as true
 };
 
