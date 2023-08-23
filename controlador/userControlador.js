@@ -69,6 +69,7 @@ const login = async (req, res) => {
 
      res
       .cookie("cookie", token, {
+        httpOnly: true,
         expire: 10000,
         secure: false,
         sameSite: 'lax'     
@@ -93,7 +94,7 @@ const deleAllUsers = async (req, res) => {
 
 const logout = async (req, res) => {
   const cokis = req.cookies.cookie;
-  console.log(cokis, "-----");
+  console.log(cokis, "delete");
   res.clearCookie("cookie");
   res.status(200).json({ msg: "borradp" });
 };
