@@ -67,7 +67,7 @@ const login = async (req, res) => {
       expiresIn: "30d",
     });
 
-    return res
+     res
       .cookie("cookie", token, {
         expire: 10000,
         httpOnly: true,
@@ -75,7 +75,7 @@ const login = async (req, res) => {
         sameSite: 'lax',
         path: '/
       })
-      .status(200).json(data);
+      return res.status(200).json(data);
   }
 };
 
