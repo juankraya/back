@@ -12,6 +12,6 @@ const router = express.Router();
 router.post("/create", verifyToken, crearTarea);
 router.put("/:id", actualizarTarea);
 router.delete("/", deleteAllTask);
-router.delete("/:id", verifyToken, deleteTaskbyId);
+router.delete("/:id", deleteTaskbyId);
 
 export default router;
