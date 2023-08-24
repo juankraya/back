@@ -7,23 +7,25 @@ import cors from "cors";
 
 const app = express();
 
-const whiteList = "https://carrusel-production.up.railway.app/user";
+
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (whiteList.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Error de cors"));
-    }
-  },
+  origin: "https://carrusel-production.up.railway.app",
   credentials: true, //included credentials as true
 };
 
 app.use(cors(corsOptions));
 
+const allowCrossDomain = (req, res, next) => {
+  res.header(`Access-Control-Allow-Origin`, `https://carrusel-production.up.railway.app`);
+  res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+  res.header(`Access-Control-Allow-Headers`, `Content-Type`);
+  next();
+};
+
 const port = 4000;
 app.use(bodyParser.json());
+app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
