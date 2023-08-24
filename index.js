@@ -7,7 +7,7 @@ import cors from "cors";
 
 const app = express();
 
-const whiteList = [process.env.FRONTEND];
+const whiteList = "https://carrusel-production.up.railway.app/user";
 
 const corsOptions = {
   origin: function (origin, callback) {
